@@ -10,7 +10,7 @@ import model.vo.CommentVO;
 
 public class CommentDAO {
 	
-	public ArrayList<CommentVO> select() {
+	public ArrayList<CommentVO> select(String movie) {
 		Connection conn = ConnectDB.connect();
 		
 		Statement stmt = null;
@@ -19,7 +19,7 @@ public class CommentDAO {
 		
 		try {
 			stmt = conn.createStatement();
-			rs = stmt.executeQuery("SELECT * FROM COMM");
+			rs = stmt.executeQuery("SELECT * FROM COMM WHERE moviename = '" + movie + "'");
 			
 			list = new ArrayList<CommentVO>();
 			while(rs.next()) {

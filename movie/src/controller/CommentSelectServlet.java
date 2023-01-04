@@ -16,16 +16,24 @@ import model.vo.CommentVO;
 @WebServlet("/comment")
 public class CommentSelectServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
 	private CommentDAO dao;
 	public void init() {
 		dao = new CommentDAO();
 	}
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
 		
-		ArrayList<CommentVO> list = dao.select();
+		String movie = request.getParameter("movie");
+		ArrayList<CommentVO> list = dao.select(movie);
+		
+		
+		System.out.println(movie);
 		
 		String view = "";
-		System.out.println(list);
+		
 		if(list.size() != 0) {
 			request.setAttribute("commentlist", list);
 			view = "comment/commentList.jsp";
