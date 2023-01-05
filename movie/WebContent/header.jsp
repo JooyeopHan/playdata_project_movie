@@ -50,7 +50,7 @@
        				 </label>
        				</div> 
 					<button class="w-100 btn btn-lg btn-secondary mt-3" type="submit">로그인</button>
-					
+					<a href="http://localhost:8088/reprotype/sign-up.jsp"><button class="w-100 btn btn-lg btn-secondary mt-3" type="button">회원가입</button></a>
 			      </div>
 			      <div class="offcanvas-body">
 			        
