@@ -17,25 +17,25 @@
             </div>
             <form id="signupForm">
                 <div class="form-floating mt-4">
-					 <input type="text" class="form-control" id="id" placeholder="holdid">
+					 <input type="text" class="form-control" id="id" placeholder="holdid" required>
 					 <label for="id">아이디</label>
 					 <div class="valid-feedback">사용가능</div>
 					 <div class="invalid-feedback">4자리 이상 입력하세요.</div>
 				</div>					
 				<div class="form-floating mt-4">
-					<input type="password" class="form-control" id="pwd" placeholder="holdpwd">
+					<input type="password" class="form-control" id="pwd" placeholder="holdpwd" required>
 					<label for="pwd">비밀번호</label>
 					<div class="valid-feedback">사용가능</div>
 					<div class="invalid-feedback">4자리 이상 입력하세요.</div>
 				</div>
 				<div class="form-floating mt-4">
-					<input type="password" class="form-control" id="repwd" placeholder="holdrepwd">
+					<input type="password" class="form-control" id="repwd" placeholder="holdrepwd" required>
 					<label for="repwd">비밀번호 재확인</label>
 					<div class="valid-feedback">일치합니다.</div>
 					<div class="invalid-feedback">일치하지 않습니다.</div>
 				</div>
                 <div class="form-floating mt-4">
-                    <input type="text" class="form-control" id="name" placeholder="holdname">
+                    <input type="text" class="form-control" id="name" placeholder="holdname" required>
                     <label for="name">이름</label>
                 </div>
 			    <div class="form-group">
@@ -47,7 +47,7 @@
 			    </div>                
                 <div class="form-group">
                		<label for="InputEmail1" class="form-label mt-4">Email</label>
-                    <input type="email" class="form-control" id="InputEmail1" placeholder="이메일">
+                    <input type="email" class="form-control" id="InputEmail1" placeholder="이메일" required>
                 </div>
 				<div class="d-grid mt-4 gap-2">
                     <button class="btn btn-primary btn-lg" type="submit">가입하기</button>
@@ -56,31 +56,31 @@
         </div>
         
         <script>
-	    	let pwd= "";
-// 	    	const validF = () => {
-// 	    		let isValid=false;
-// 	    		let inputId=this.value;
-// 	    		isValid = inputId.length > 4 ? true : false;   
-	  		
-// 	    		if(isValid){
-// 	    			this.classList.remove("is-invalid");
-// 	    			this.classList.add("is-valid");
-	    			
-	    			
-// 	    		} else{        			
-// 	    			this.classList.remove("is-valid");
-// 	    			this.classList.add("is-invalid");
-// 	    		}
-// 	    	} 	
-        
-        	document.querySelector("#pwd").addEventListener("input", function(){
+  			
+        	document.querySelector("#id").addEventListener("input", function(){
         		let inputId=this.value;
         		isValid = inputId.length > 4 ? true : false;   
       		
         		if(isValid){
         			this.classList.remove("is-invalid");
         			this.classList.add("is-valid");
-        			pwd = inputId;
+//         			id = inputId;
+        			
+        		} else{        			
+        			this.classList.remove("is-valid");
+        			this.classList.add("is-invalid");
+        		}
+        	});
+        	
+        	let pwd = "";
+        	document.querySelector("#pwd").addEventListener("input", function(){
+        		let inputPwd=this.value;
+        		isValid = inputPwd.length > 4 ? true : false;   
+      		
+        		if(isValid){
+        			this.classList.remove("is-invalid");
+        			this.classList.add("is-valid");
+        			pwd = inputPwd;
         			console.log(pwd)
         			
         		} else{        			
@@ -88,83 +88,22 @@
         			this.classList.add("is-invalid");
         		}
         	});
-			
-        	document.querySelector("#repwd").addEventListener("input", function(){
-        		if (pwd != repwd){
-        			this.classList.remove("is-valid");
-         			this.classList.add("is-invalid");
-         			console.log(pwd)
-         			console.log(repwd)
-        		} else {
+        	
+        	document.querySelector('#repwd').addEventListener("input", function(){
+        		let inputRepwd=this.value;
+        		isValid = inputRepwd == pwd ? true : false;
+        		console.log(pwd)
+        		console.log(repwd)
+        		
+        		if(isValid){
         			this.classList.remove("is-invalid");
-         			this.classList.add("is-valid");
-        		}
+        			this.classList.add("is-valid");       			
+        		
+        		} else{        			
+        			this.classList.remove("is-valid");
+        			this.classList.add("is-invalid");
+        		}       		
         	});
-        		
-        
-        
-        
-//         	function checkPassword() {
-//         		let pwd = document.getElementById('pwd').value;
-//         		let repwd = document.getElementById('repwd').value;
-        		
-//         		if(pwd.length < 4) {
-//         			alert('4자리 이상 입력하세요.');
-//         			return false;
-//         		}
-        		
-//         		if(pwd != repwd) {
-//         			alert("비밀번호불일치");
-//                     return false;
-//         		} else {
-//         			alert("비밀번호가 일치합니다");
-//                     return true;
-//         		}
-//         	}
-        
-        
-//         	let id= "";
-//         	const validF = () => {
-//         		let isValid=false;
-//         		let inputId=this.value;
-//         		isValid = inputId.length > 4 ? true : false;   
-      		
-//         		if(isValid){
-//         			this.classList.remove("is-invalid");
-//         			this.classList.add("is-valid");
-        			
-        			
-//         		} else{        			
-//         			this.classList.remove("is-valid");
-//         			this.classList.add("is-invalid");
-//         		}
-//         	} 
-  			
-//         	document.querySelector("#id").addEventListener("input", function(){
-//         		let inputId=this.value;
-//         		isValid = inputId.length > 4 ? true : false;   
-      		
-//         		if(isValid){
-//         			this.classList.remove("is-invalid");
-//         			this.classList.add("is-valid");
-//         			id = inputId;
-        			
-//         		} else{        			
-//         			this.classList.remove("is-valid");
-//         			this.classList.add("is-invalid");
-//         		}
-//         	});
-//         	document.querySelector("#pwd").addEventListener("input", validF());
-//         	document.querySelector("#repwd").addEventListener("input", function(id){
-//         		let repwd=this.value;
-//         		if(id !== repwd){
-//         			this.classList.remove("is-chkpwd");
-//         			this.classList.add("is-rechkpwd");
-//         		} else {
-//         			this.classList.remove("is-rechkpwd");
-//         			this.classList.add("is-chkpwd");
-//         		}
-//         	});
 
         </script>
         
