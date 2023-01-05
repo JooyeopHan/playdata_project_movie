@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>¿µÈ­ °Ë»ö</title>
+<meta charset="UTF-8">
+<title>ì˜í™” ê²€ìƒ‰</title>
 </head>
 <body>
-	<h1>¿µÈ­ÁøÈïÀ§¿øÈ¸ ÀÏº° ¹Ú½º¿ÀÇÇ½º API ¿äÃ»</h1>
-	<button onclick=callAPI()>ÀÏÀÏ ¹Ú½º ¿ÀÇÇ½º ¿äÃ»</button>
-<!-- 	<button onclick = saveMovie()>¿äÃ» ¸í´Ü ÀúÀå</button> -->
+	<h1>ì˜í™”ì§„í¥ìœ„ì›íšŒ ì¼ë³„ ë°•ìŠ¤ì˜¤í”¼ìŠ¤ API ìš”ì²­</h1>
+	<button onclick=callAPI()>ì¼ì¼ ë°•ìŠ¤ ì˜¤í”¼ìŠ¤ ìš”ì²­</button>
+<!-- 	<button onclick = saveMovie()>ìš”ì²­ ëª…ë‹¨ ì €ì¥</button> -->
 	
-	<h1>¿À´ÃÀÇ ¹Ú½º ¿ÀÇÇ½º ·©Å·</h1>
+	<h1>ì˜¤ëŠ˜ì˜ ë°•ìŠ¤ ì˜¤í”¼ìŠ¤ ë­í‚¹</h1>
 	<h3></h3>
 	<h4 id = "result"></h4>
 	
@@ -19,8 +19,8 @@ crossorigin="anonymous"></script>
 
 <script>
 const today = Date()
-
 console.log(today)
+
 
 function callAPI(){$.ajax({
 	  method: "GET",
@@ -29,6 +29,7 @@ function callAPI(){$.ajax({
 	  complete:function(xhr,status){
 	    	console.log("complete")
 	    	var dom1 = document.getElementsByTagName("name")  
+	
 	    	var boxOfficeDaily = []
 
 	    	for (var j =0; j<dom1.length; j++){
@@ -39,15 +40,25 @@ function callAPI(){$.ajax({
 	    		console.log(boxOfficeDaily)
 	    	}
 	    	else {
-	    		window.alert("ÇØ´çÇÏ´Â ¿µÈ­°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.")
+	    		window.alert("í•´ë‹¹í•˜ëŠ” ì˜í™”ê°€ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.")
 	    	}
-	    	
+	    	// NaverAPIë¥¼ í†µí•´ ì¸ë„¤ì¼ì„ ë°›ì•„ì™€ì•¼ ëŒ
 	    	$.ajax({
 	    		url : "naverAPI",
 	    		method:"POST",
 	    		data : {
-	    			name : "ÇÑÁÖ¿±",
-	    			boxOfficeDaily : boxOfficeDaily
+	    			/*ë°•ìŠ¤ì˜¤í”¼ìŠ¤ 1~10ìœ„ ì „ì†¡ (ë¦¬ìŠ¤íŠ¸ ë³´ë‚´ëŠ” ë°©ë²•ì„ ëª¨ë¦„, ë³´ë‚´ë„ ì•ˆë°›ì•„ì§ nullê°’) */
+	    			boxOfficeDaily0 : boxOfficeDaily[0],
+	    			boxOfficeDaily1 : boxOfficeDaily[1],
+	    			boxOfficeDaily2 : boxOfficeDaily[2],
+	    			boxOfficeDaily3 : boxOfficeDaily[3],
+	    			boxOfficeDaily4 : boxOfficeDaily[4],
+	    			boxOfficeDaily5 : boxOfficeDaily[5],
+	    			boxOfficeDaily6 : boxOfficeDaily[6],
+	    			boxOfficeDaily7 : boxOfficeDaily[7],
+	    			boxOfficeDaily8 : boxOfficeDaily[8],
+	    			boxOfficeDaily9 : boxOfficeDaily[9],
+	    			
 	    		},
 	    		success: function (resultText) {
 	                 $('#result').html(resultText);
@@ -65,7 +76,7 @@ function callAPI(){$.ajax({
 	})
 	  .done(function( msg ) {
 	    for(var i=0; i < msg.boxOfficeResult.dailyBoxOfficeList.length ; i++){
-	    /* $(" h3 ").append("<name id = "+i+">"+"Rank"+(i+1)+"À§ :  "+msg.boxOfficeResult.dailyBoxOfficeList[i].movieNm+"</name><br>") */
+	    /* $(" h3 ").append("<name id = "+i+">"+"Rank"+(i+1)+"ìœ„ :  "+msg.boxOfficeResult.dailyBoxOfficeList[i].movieNm+"</name><br>") */
 	    	$(" h3 ").append("<name>"+msg.boxOfficeResult.dailyBoxOfficeList[i].movieNm+"</name><br>")
 	    	
 	    } 

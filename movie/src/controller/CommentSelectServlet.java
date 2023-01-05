@@ -22,7 +22,7 @@ public class CommentSelectServlet extends HttpServlet {
 		dao = new CommentDAO();
 	}
 	
-	
+	// 메인페이지의 이미지링크로 부터 요청을 받을애들, 요청될 시 해당하는 후기 게시판 렌더링
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		
