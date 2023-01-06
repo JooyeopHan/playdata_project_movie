@@ -44,24 +44,57 @@
 			      <div class="container">
 			        
 			        <div class="d-flex justify-content-center mt-3" id="loginBoxTitle">
-			         로그인 타이틀
+			        	로그인 타이틀
 			        </div>
+			        
 			      	<div class="form-floating mt-3">
-					 <input type="text" class="form-control" id="id">
-					 <label for="id">아이디</label>
+						<input type="text" class="form-control" id="id">
+						<label for="id">아이디</label>
 					</div>
+					
 					<div class="form-floating mt-3">
-					 <input type="password" class="form-control" id="pwd">
-					 <label for="pwd">비밀번호</label>
+						<input type="password" class="form-control" id="pwd">
+						<label for="pwd">비밀번호</label>
 					</div>
+					
 					<div class="form-check mt-3">
-       				 <input type="checkbox" class="form-check-input" id="dropdownCheck">
-        			 <label class="form-check-label" for="dropdownCheck">
-         			  아이디 저장
-       				 </label>
+	       				<input type="checkbox" class="form-check-input" id="dropdownCheck">
+	        			<label class="form-check-label" for="dropdownCheck">아이디 저장</label>
        				</div> 
+       				
 					<button class="w-100 btn btn-lg btn-primary mt-3" type="submit">로그인</button>
 					
+					<hr>		
+            
+		            <ul class="myinfo_area">
+		                <li>
+		                    <div class="myphoto">
+		                        <img src="" width="56" height="56" alt="프로필 이미지">
+		                    </div>
+		                </li>
+		                <li>
+		                    <div class="myaccount">
+		                        <div class="myname">
+		                            <div class="name_text">이름</div>
+		                        </div>
+		                        <div class="address">이메일</div>
+		                    </div>
+		                </li>
+		            </ul>	
+							
+					<div class="info_title">
+						<h3 class="title_text">기본정보</h3>
+					
+					<div class="subindex_greenbox">
+						이름칸<br>
+						이메일칸<br>
+						가입날짜<br>													
+					</div>
+					
+					<a href="http://localhost:8088/movie/sign-up-test.jsp">
+						<button class="w-100 btn btn-lg btn-danger mt-3" type="button">로그아웃</button>
+					</a>
+					 
 			      </div>
 			      <div class="offcanvas-body">
 			        
