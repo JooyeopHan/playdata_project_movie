@@ -47,15 +47,15 @@
                 </div>
                 
 			    <div class="form-group">
-			      <label for="Select" class="form-label mt-4">성별</label>
-				      <select class="form-select" id="Select">
+			      <label for="select" class="form-label mt-4">성별</label>
+				      <select class="form-select" id="select">
 				        <option>남자</option>
 				        <option>여자</option>
-				      </select>			      
-			    </div>     
+				      </select>
+			    </div>
 			               
                 <div class="form-group">
-               		<label for="InputEmail1" class="form-label mt-4">Email</label>
+               		<label for="email1" class="form-label mt-4">Email</label>
                     <input type="email" class="form-control" id="email" placeholder="이메일" required>
 						<div class="invalid-feedback">유효하지 않은 이메일 입니다.</div>
                 </div>
@@ -69,76 +69,51 @@
         
         <script> 
         
+	        function checkValid(self, isValid) {	
+	    		if(isValid){
+	    			self.classList.remove("is-invalid");
+	    			self.classList.add("is-valid");
+	    			
+	    		} else{        			
+	    			self.classList.remove("is-valid");
+	    			self.classList.add("is-invalid");
+	    		}
+	    	}
+        
         	document.querySelector("#id").addEventListener("input", function(){
         		let inputId=this.value;
         		isValid = inputId.length >= 4 ? true : false;   
       		
-        		if(isValid){
-        			this.classList.remove("is-invalid");
-        			this.classList.add("is-valid");
-        			
-        		} else{        			
-        			this.classList.remove("is-valid");
-        			this.classList.add("is-invalid");
-        		}
+        		checkValid(this, isValid);
         	});
         	
-        	let pwd = "";
         	document.querySelector("#pwd").addEventListener("input", function(){
         		let inputPwd=this.value;
         		isValid = inputPwd.length >= 4 ? true : false;   
       		
-        		if(isValid){
-        			this.classList.remove("is-invalid");
-        			this.classList.add("is-valid");
-        			pwd = inputPwd;
-        			
-        		} else{        			
-        			this.classList.remove("is-valid");
-        			this.classList.add("is-invalid");
-        		}
+        		checkValid(this, isValid);
         	});
         	
         	document.querySelector('#repwd').addEventListener("input", function(){
         		let inputRepwd=this.value;
+        		let pwd = document.querySelector("#pwd").value;       		
         		isValid = inputRepwd == pwd ? true : false;
         		
-        		if(isValid){
-        			this.classList.remove("is-invalid");
-        			this.classList.add("is-valid");       			
-        		
-        		} else{        			
-        			this.classList.remove("is-valid");
-        			this.classList.add("is-invalid");
-        		}       		
+        		checkValid(this, isValid);
         	});
         	
         	document.querySelector("#name").addEventListener("input", function(){
         		let inputName=this.value;
         		isValid = inputName.length > 1 ? true : false;   
       		
-        		if(isValid){
-        			this.classList.remove("is-invalid");
-        			this.classList.add("is-valid");
-        			
-        		} else{        			
-        			this.classList.remove("is-valid");
-        			this.classList.add("is-invalid");
-        		}
+        		checkValid(this, isValid);
         	});
         	
         	document.querySelector("#email").addEventListener("input", function(){
         		let inputEmail=this.value;
         		let reg_email = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
         		
-        		if(!reg_email.test(inputEmail)) {
-        			this.classList.remove("is-valid");
-        			this.classList.add("is-invalid");
-        	        
-        	     } else{      
-        	    	this.classList.remove("is-invalid");
-         			this.classList.add("is-valid");
-        	     }    		
+        		checkValid(this, reg_email.test(inputEmail));    		
         	});
 
         </script>     
