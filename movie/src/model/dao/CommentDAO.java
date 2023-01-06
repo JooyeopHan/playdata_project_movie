@@ -1,12 +1,19 @@
 package model.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 
 import model.vo.CommentVO;
+
+import model.vo.MovieVO;
 
 public class CommentDAO {
 	
@@ -52,5 +59,71 @@ public class CommentDAO {
 		}
 		return list;
 	}
+	
+	public boolean update(CommentVO vo) {
+		Connection conn = ConnectDB.connect();
+		PreparedStatement pstmt = null;
+		try {
+			pstmt = conn.prepareStatement(
+					"update comm set " +  
+					"cont = ?, " + 
+					"prehour= ?" +
+					"where cnt = ?"); 
+			
+			
+			Date today = new Date ();
+			System.out.println(today);
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			String targetDay = sdf.format(today);
+			System.out.println("포맷 후 :" + targetDay);
+			
+			pstmt.setString(1, vo.getContent());
+			pstmt.setString(2, targetDay);
+			pstmt.setInt(3, vo.getCnt());
+			pstmt.executeUpdate();
+			return true;
+		} catch (SQLException e) {
+			System.err.println("comment insert 과정에서 오류 발생 " + e);
+			return false;
+		} finally {
+			close(pstmt, null, conn);
+		}
+	}
+		
+		
+	public boolean delete(int cnt) {
+		Connection conn = ConnectDB.connect();
+		PreparedStatement pstmt = null;
+		try {
+			pstmt = conn.prepareStatement("DELETE FROM comm WHERE cnt = " + cnt);
 
+			if (pstmt.executeUpdate() != 0)
+				return true;
+			else
+				return false;
+		} catch (SQLException e) {
+			System.err.println("delete 과정에서 오류 발생 " + e);
+			return false;
+		} finally {
+			close(pstmt, null, conn);
+		}
+	}
+	
+		
+	private void close(Statement s, ResultSet r, Connection conn) {
+		try {
+			if (r != null)
+				r.close();
+			if (s != null)
+				s.close();
+			ConnectDB.close(conn);
+		} catch (SQLException e) {
+			System.err.println("객체 close 과정에서 문제 발생" + e);
+		}
+	}
+		
+	
 }
+	
+	
