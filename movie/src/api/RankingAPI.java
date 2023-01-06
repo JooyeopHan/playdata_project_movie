@@ -14,10 +14,12 @@ public class RankingAPI {
 	
 	public RankingAPI() {}
 	
-    public static String getUrl() {
+    public static String getUrl(String targetDt) {
         	
 
-        String apiURL = "https://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=8ef8d0855390695f37c6d9af6fd08725&targetDt=20230103";    // JSON 결과
+    	//Date이 들어가야 됌 
+    	
+        String apiURL = "https://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=8ef8d0855390695f37c6d9af6fd08725&targetDt="+targetDt;    // JSON 결과
 
 
         System.out.println(apiURL);

@@ -3,6 +3,8 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -19,82 +21,90 @@ import org.json.JSONObject;
 
 import model.vo.CommentVO;
 import model.vo.MovieVO;
+import java.text.SimpleDateFormat;
 import api.NaverAPI;
 import api.RankingAPI;
 
 @WebServlet("/naverAPI")
 public class NaverServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-   
+	
 	// search/NaverAPI.html 에서 보낸 Get요청
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		String boxOffRes = RankingAPI.getUrl();
+
 		
 		try {
+			
+			// 오늘 날짜
+			Date today = new Date ();
+			System.out.println(today);
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+			String targetDay = sdf.format(today);
+			System.out.println("포맷 후 :" + targetDay);
+			
+			// 어제날짜
+			Calendar c1 = Calendar.getInstance();
+			c1.add(Calendar.DATE, -1);
+			String yesterday = sdf.format(c1.getTime());
+			
+			// 날짜에 따른 박스오피스 api 요청
+			//String boxOffRes = RankingAPI.getUrl(targetDay);
+			String boxOffRes = RankingAPI.getUrl(yesterday);
 			
 			// 박스 오피스 JSON Parsing
 			JSONObject jobj2 = new JSONObject(boxOffRes);
 			JSONObject BR = jobj2.getJSONObject("boxOfficeResult");
 			JSONArray dBOL = BR.getJSONArray("dailyBoxOfficeList");
 			
-/*			System.out.println("BR  :" + BR);
-			System.out.println("dBOL  :" + dBOL);
-			*/
-			
 			HttpSession session = request.getSession();
-			ArrayList<MovieVO> MovieList = new ArrayList();
+			ArrayList<MovieVO> movielist = new ArrayList<MovieVO>();
+			String movieNm;
 			for (int i=0; i<dBOL.length();i++) {
-				// System.out.println(dBOL.getJSONObject(i).get("rank"));
-				System.out.println(dBOL.getJSONObject(i).get("movieNm"));
 				
 				
 				session.setAttribute("movie", new MovieVO());
-				MovieVO movieInfo = (MovieVO)session.getAttribute("movie");
+				MovieVO movieVO = (MovieVO)session.getAttribute("movie");
+				movieNm = dBOL.getJSONObject(i).getString("movieNm");
 				
-				movieInfo.setMovieNM(dBOL.getJSONObject(i).getString("movieNm"));
+			
+				
 				// 무비 네임 기반 검색..... (썸네일 및 정보 가져오기)
-				String naverRes = NaverAPI.getUrl(dBOL.getJSONObject(i).getString("movieNm"));
+				String naverRes = NaverAPI.getUrl(movieNm);
 				
 				// Naver API JSON parsing
 				JSONObject jobj1 = new JSONObject(naverRes);
 				JSONArray items = jobj1.getJSONArray("items");
 				
-
-				System.out.println("items  :" + items);
-				System.out.println("imageUrl" + items.getJSONObject(0).get("image"));
+				
+				// movieVO setting (Naver의 경우 영화진흥원의 결과중 가장 첫번째 결과에서 뽑음)
+				movieVO.setMovieNM(movieNm);
+				movieVO.setRank(dBOL.getJSONObject(i).getInt("rank"));
+				// 여기부터 Naver API 결과		
+				movieVO.setPubDate(items.getJSONObject(0).getInt("pubDate"));
+				movieVO.setSubtitle(items.getJSONObject(0).getString("subtitle"));
+				movieVO.setUserRating(items.getJSONObject(0).getDouble("userRating"));
+				movieVO.setDirector(items.getJSONObject(0).getString("director"));
+				movieVO.setActor(items.getJSONObject(0).getString("actor"));
+				movieVO.setImgUrl(items.getJSONObject(0).getString("image"));
 				
 				
-				MovieList.add(movieInfo);
+				
+				movielist.add(movieVO);
 			}
 			
-			System.out.println("영화 리스트 : "+ MovieList);
-			System.out.println("영화 제목 : "+ MovieList.get(0).getMovieNM());
-			System.out.println("영화 제목 : "+ MovieList.get(3).getMovieNM());
 			
-//			if(session.getAttribute("movie"+i) == null) {
-//				session.setAttribute("movie"+i, new MovieVO());
-//			}
-//			MovieVO movieInfo = (MovieVO)session.getAttribute("movie");
-//			
-//			movieInfo.setMovieNM("영화이름");
-//			movieInfo.setDirector("감독");
-//			movieInfo.setSubtitle("부제");
+			session.setAttribute("movielist", movielist);
 			response.setContentType("text/html;charset=utf-8");
 						
 			
 			//request.setAttribute("naverUrl", naverRes);
 			request.setAttribute("boxOffUrl", boxOffRes);
 			
-			
-//			PrintWriter out = response.getWriter();	
-//			out.print("<p>"+request.getAttribute("jsonUrl")+"</p>");
-//			out.print("<p>"+naverRes+"</p>");
-//			out.print("<img src = https://ssl.pstatic.net/imgmovie/mdi/mit110/1221/122101_P00_110037.jpg>");
-			
 			String view = "";
-			view = "/etc/jsontest.jsp";
+			view = "/index.jsp";
 			RequestDispatcher rd = request.getRequestDispatcher(view);
 			rd.forward(request, response);
 			
@@ -105,7 +115,7 @@ public class NaverServlet extends HttpServlet {
 		
 	}
 
-	// index.html에서 보낸 Post요청
+	//  Post요청 (무시해도 됌 AJAX용임)
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
 		resp.setContentType("text/html;charset=utf-8");	

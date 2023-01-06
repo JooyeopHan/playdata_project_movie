@@ -5,12 +5,20 @@ import java.sql.Date;
 public class MovieVO {
 	private String movieNM;
     private String subtitle;
-    private Double userRating;
+    private Integer rank;
+	private Double userRating;
     private Integer pubDate;
     private String director;
     private String actor;
     private String imgUrl;
     
+    
+    public Integer getRank() {
+		return rank;
+	}
+	public void setRank(Integer rank) {
+		this.rank = rank;
+	}
     public String getMovieNM() {
 		return movieNM;
 	}
@@ -47,15 +55,13 @@ public class MovieVO {
 	public void setActor(String actor) {
 		this.actor = actor;
 	}
-	public String getImageUrl() {
-		return imageUrl;
+	public String getImgUrl() {
+		return imgUrl;
 	}
-	public void setImageUrl(String imageUrl) {
-		this.imageUrl = imageUrl;
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
 	}
-	private String imageUrl;
+	
 	
     
-    
-
 }
