@@ -19,36 +19,36 @@
                 </a>
             </div>
             
-            <form id="signupForm">
+            <form id="signupForm" name="signupForm">
                 <div class="form-floating mt-4">
-					 <input type="text" class="form-control" id="id" placeholder="holdid" required>
+					 <input type="text" class="form-control" id="id" name="id" placeholder="holdid" required>
 					 <label for="id">아이디</label>
 						 <div class="valid-feedback">사용가능</div>
 						 <div class="invalid-feedback">4자리 이상 입력하세요.</div>
 				</div>		
 							
 				<div class="form-floating mt-4">
-					<input type="password" class="form-control" id="pwd" placeholder="holdpwd" required>
+					<input type="password" class="form-control" id="pwd" name="pwd" placeholder="holdpwd" required>
 					<label for="pwd">비밀번호</label>
 						<div class="valid-feedback">사용가능</div>
 						<div class="invalid-feedback">4자리 이상 입력하세요.</div>
 				</div>
 				
 				<div class="form-floating mt-4">
-					<input type="password" class="form-control" id="repwd" placeholder="holdrepwd" required>
+					<input type="password" class="form-control" id="repwd" name="repwd" placeholder="holdrepwd" required>
 					<label for="repwd">비밀번호 재확인</label>
 						<div class="valid-feedback">일치합니다.</div>
 						<div class="invalid-feedback">일치하지 않습니다.</div>
 				</div>
 				
                 <div class="form-floating mt-4">
-                    <input type="text" class="form-control" id="name" placeholder="holdname" required>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="holdname" required>
                     <label for="name">이름</label>
                 </div>
                 
 			    <div class="form-group">
 			      <label for="select" class="form-label mt-4">성별</label>
-				      <select class="form-select" id="select">
+				      <select class="form-select" id="select" name="select">
 				        <option>남자</option>
 				        <option>여자</option>
 				      </select>
@@ -56,7 +56,7 @@
 			               
                 <div class="form-group">
                		<label for="email1" class="form-label mt-4">Email</label>
-                    <input type="email" class="form-control" id="email" placeholder="이메일" required>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="이메일" required>
 						<div class="invalid-feedback">유효하지 않은 이메일 입니다.</div>
                 </div>
                 
