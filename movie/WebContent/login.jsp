@@ -65,44 +65,33 @@
 					<button class="w-100 btn btn-lg btn-primary mt-3" type="submit">로그인</button>
 					
 					<hr>		
-            
-		            <ul class="myinfo_area">
-		                <li>
-		                    <div class="myphoto">
-		                        <img src="" width="56" height="56" alt="프로필 이미지">
-		                    </div>
-		                </li>
-		                <li>
-		                    <div class="myaccount">
-		                        <div class="myname">
-		                            <div class="name_text">이름</div>
-		                        </div>
-		                        <div class="address">이메일</div>
-		                    </div>
-		                </li>
-		            </ul>	
-							
-					<div class="info_title">
-						<h3 class="title_text">기본정보</h3>
+
+					<h5 class="title_text">Profile</h5>
 					
-					<div class="subindex_greenbox">
-						이름칸<br>
-						이메일칸<br>
-						가입날짜<br>													
+					<div class="subindex_purplebox">
+						<div class="profile_area">
+							<img src="https://phinf.pstatic.net/contact/20191003_136/1570029116351cmgSW_GIF/200.gif?type=s160" width="84" height="84" alt="프로필 이미지">
+								<div class="profile">
+									<p class="userid">Blue</p>
+									<p class="useremail">myway5231@naver.com</p>
+									<p class="signupdate">가입날짜 : 2023년 01월 07일</p>
+								</div>
+						</div>
 					</div>
 					
-					<a href="http://localhost:8088/movie/sign-up-test.jsp">
+					<a href="http://localhost:8088/movie/test.jsp">
 						<button class="w-100 btn btn-lg btn-danger mt-3" type="button">로그아웃</button>
 					</a>
 					 
 			      </div>
+			      
 			      <div class="offcanvas-body">
 			        
 			      </div>
 			    </div>
-			  </div>
-			</nav>
-			
+			    </div>
+			    </nav>
+			  </div>					
 		</div>
 		<div class="p-2  " >		
 			<div style="width: 100vw; ">
