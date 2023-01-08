@@ -24,8 +24,8 @@ import model.DAO.CommentDAO;
 import model.VO.CommentVO;
 
 
-@WebServlet("/detail")
-public class DetailServlet extends HttpServlet {
+@WebServlet("/update")
+public class UpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private CommentDAO dao;
@@ -33,41 +33,12 @@ public class DetailServlet extends HttpServlet {
 		dao = new CommentDAO();
 	}
 	
-	// 메인페이지의 이미지링크로 부터 요청을 받을애들, 요청될 시 해당하는 후기 게시판 렌더링
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
-			throws ServletException, IOException {
-		
-		
-		
-		String cnt = request.getParameter("cnt");
-		String action = request.getParameter("action");
-		
-		
-		System.out.println("영화 :" +request.getParameter("movie"));
-		System.out.println("id :" +request.getParameter("id"));
-		String view = "";
-		if (action.equals("delete")) {
-			System.out.println("삭제하지 말라니까?");
-			boolean result = dao.delete(Integer.parseInt(cnt)); // 삭제 쿼리문 수행
-			
-			if (result) {
-				request.setAttribute("msg", "글이 성공적으로 삭제되었습니다.");
-			} else {
-				request.setAttribute("msg", "글이 삭제되지 않았습니다.");
-			}	
-
-			RequestDispatcher rd= request.getRequestDispatcher("select");
-			rd.forward(request,response);
-			
-		}
-	}
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		System.out.println("넘어간거는 맞아?");
 		request.setCharacterEncoding("UTF-8");
 		
-		
-		
+			
 		//Json정보 get body 및 Object 변환
 		String body = getBody(request);
 		JSONObject jsonObj;
@@ -82,8 +53,7 @@ public class DetailServlet extends HttpServlet {
 				String movie = (String)jsonObj.get("movie");
 				String content = (String)jsonObj.get("cont");
 				Integer cnt = jsonObj.getInt("cnt");
-				String id = (String)jsonObj.get("id");
-				
+				System.out.println(cnt);
 				
 				CommentVO vo = new CommentVO();
 				vo.setMoviename(movie);
@@ -97,10 +67,6 @@ public class DetailServlet extends HttpServlet {
 					request.setAttribute("msg", "글이 입력되지 않았습니다.");
 				}	
 				
-				request.setAttribute("id", id);
-				request.setAttribute("movie", movie);
-				
-
 				RequestDispatcher rd= request.getRequestDispatcher("select");
 				rd.forward(request,response);				
 			}

@@ -31,7 +31,8 @@
 </head>
 <body   class="bg color " style=" width: 100vw; height: 100vh;">
 <%
-	Integer id =  Integer.parseInt(request.getParameter("id"));
+/* 	Integer id =  Integer.parseInt(request.getParameter("id")); */
+	Integer id =  Integer.parseInt(String.valueOf(request.getAttribute("id"))); 
 	ArrayList<MovieVO> movielist = (ArrayList<MovieVO>)session.getAttribute("movielist");
 	ArrayList<CommentVO> commentlist = (ArrayList<CommentVO>)request.getAttribute("commentlist");
 	
@@ -89,7 +90,9 @@
 		                        data-bs-toggle="modal"
 		                        data-bs-target="#comment-edit-modal"
 		                        data-bs-action="update"
-		                        data-bs-cnt="${item.cnt}">수정
+		                        data-bs-cnt="${item.cnt}"
+		                        data-bs-movie="<%=m2 %>"
+		                        data-bs-id="<%=id %>">수정
                				</button>
 <%-- 								<input type="image" name="update" value="${i}" src="edit.png" style="width:20px; height:20px;">
 								<input type = "hidden" name = "cnt" value = "${item.cnt}">
@@ -100,6 +103,8 @@
 							<form action="detail" method="get">
 								<input type="image" name="delete" value="${i}" src="delete.png" style="width:20px; height:20px;">
 								<input type = "hidden" name = "cnt" value = "${item.cnt}">
+								<input type="hidden" name="id" value="<%=id %>" >
+								<input type="hidden" name="movie" value="<%=m2 %>" >
 								<input type="hidden" name="action" value="delete">
 							</form>
 						</th>
@@ -127,7 +132,9 @@
                     </div>
 
                     <!-- 히든 인풋 -->
-                    <input type="hidden" id="edit-comment-id" value = "1">
+                    <input type="hidden" id="edit-comment-id" value = "<%= id%>">
+                    <input type="hidden" id="edit-comment-cnt" value = "1">
+                    <input type="hidden" id="edit-comment-movie" value = "<%= m2%>">
 
                     <!-- 전송 버튼 -->
                     <button type="button" class="btn btn-outline-primary btn-sm" id="comment-update-btn">수정 완료</button>
@@ -145,7 +152,7 @@
 //수정 완료 버튼
 const commentUpdateBtn = document.querySelector("#comment-update-btn");
 
-// 수정 완료 버튼 누를 시!
+
 
 {
     // 모달 요소 선택
@@ -157,27 +164,34 @@ const commentUpdateBtn = document.querySelector("#comment-update-btn");
         const triggerBtn = event.relatedTarget;
 
         // 데이터 가져오기
-        const articleId = triggerBtn.getAttribute("data-bs-cnt");
+        const cnt= triggerBtn.getAttribute("data-bs-cnt");
+        const movie= triggerBtn.getAttribute("data-bs-moive");
+        const id= triggerBtn.getAttribute("data-bs-id");
 
         // 데이터 반영
-        document.querySelector("#edit-comment-id").value = articleId;
+        document.querySelector("#edit-comment-cnt").value = cnt;
+
+        
     });
 
 {
 
-}
+}	// 수정 완료 버튼 누를 시!
 	commentUpdateBtn.addEventListener("click",function() {
 	    // 수정 객체 댓글을 생성
 	    const comment = {
 	        cont: document.querySelector("#edit-comment-body").value,
-	        cnt: document.querySelector("#edit-comment-id").value
+	        cnt: document.querySelector("#edit-comment-cnt").value,
+	        movie: document.querySelector("#edit-comment-movie").value,
+	        id: document.querySelector("#edit-comment-id").value,
+	        action : "update"
 	    };
 	
 	    console.log(comment);
 	
 	    // 수정 REST API 호출 - fetch()
 	    
-	    fetch("http://localhost:8088/reprotype/detail", {
+	    fetch("/reprotype/detail", {
 	        method: "POST",          
 	        headers: {
 	            'Content-Type': 'application/json',
@@ -186,9 +200,9 @@ const commentUpdateBtn = document.querySelector("#comment-update-btn");
 	    }).then(response => {
 	        // http 응답 코드에 따른 메세지 출력
 	            const msg = (response.ok) ? "댓글 수정이 완료 되었습니다." : "댓글 수정 실패...!";
-	            console.log(msg);
+	            window.alert(msg);
 	        // 현재 페이지를 새로 고침
-	        //window.location.reload();
+	        window.location.reload();
 	    });
 	});
 

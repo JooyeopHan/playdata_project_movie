@@ -36,11 +36,10 @@
 				</div>
 				<div class="container-fluid d-flex flex-row"  id="scroll" style=" overflow:scroll; max-width:100vw; height:70vh;">
 				<c:forEach var="i" begin="0" end="7" >
-					<form action="detail" method="post">
+					<form action="select" method="get">
 						<input type="image" class="mt-3 mx-3 img" src="${movielist.get(i).getImgUrl()}" style="max-width: 20vw;height:60vh;">
 						<input type="hidden" name="id" value="${i}" >
 						<input type="hidden" name="movie" value="${movielist.get(i).getMovieNM()}" >
-						<input type="hidden" name="action" value="select">
 					</form>
 				</c:forEach>
 				</div>
