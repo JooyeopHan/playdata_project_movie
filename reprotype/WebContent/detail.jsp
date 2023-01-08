@@ -61,11 +61,13 @@
 			<p>영화 감독 : <%=m7 %> </p>
 			<p>영화 배우 : <%=m8 %> </p> 
 			<hr style="color:black;">
-			<form >
+			<form action = "detail" method = "get">
 				<div class="input-group mb-3 mx-auto floating-right row">
-					<input type="hidden" name="movieNM" value=<%=m2 %>>
-					<input type="hidden" name="nickname" value=<%=m2 %>>
-	  				<input type="text" name="context" class="form-control col-10" placeholder="댓글을 작성해주세요" aria-describedby="button-addon2">
+					<input type="hidden" name="movie" value="<%= m2 %>">
+					<input type="hidden" name="nickname" value="익명">
+					<input type="hidden" name="id" value="<%= id %>">
+					<input type="hidden" name="action" value="insert">
+	  				<input type="text" name="content" class="form-control col-10" placeholder="댓글을 작성해주세요" aria-describedby="button-addon2">
 	  				<button class="btn col-2" type="submit" id="button-addon2" style="border:0.1px solid black;background-color:#D0D0D0;">게시</button>
 				</div>
 			</form>

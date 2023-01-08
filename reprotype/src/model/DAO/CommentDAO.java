@@ -16,6 +16,7 @@ import model.VO.CommentVO;
 
 import model.VO.MovieVO;
 
+
 public class CommentDAO {
 	
 	public ArrayList<CommentVO> select(String movie) {
@@ -75,12 +76,9 @@ public class CommentDAO {
 			
 			
 			Date today = new Date ();
-			System.out.println(today);
-			
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			String targetDay = sdf.format(today);
-			System.out.println("포맷 후 :" + targetDay);
-			
+
 			pstmt.setString(1, vo.getContent());
 			pstmt.setString(2, targetDay);
 			pstmt.setInt(3, vo.getCnt());
@@ -107,6 +105,31 @@ public class CommentDAO {
 				return false;
 		} catch (SQLException e) {
 			System.err.println("delete 과정에서 오류 발생 " + e);
+			return false;
+		} finally {
+			close(pstmt, null, conn);
+		}
+	}
+	
+	public boolean insert(CommentVO vo) {
+		Connection conn = ConnectDB.connect();
+		PreparedStatement pstmt = null;
+		Date today = new Date ();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		String targetDay = sdf.format(today);
+		
+		try {
+			pstmt = conn.prepareStatement("INSERT INTO comm VALUES(?,?,?,?,?,comm_seq.NEXTVAL)");
+			pstmt.setString(1, vo.getNickname());
+			pstmt.setString(2, targetDay);
+			pstmt.setString(3, vo.getContent());
+			pstmt.setString(4, vo.getMoviename());
+			pstmt.setInt(5, 0);
+
+			pstmt.executeUpdate();
+			return true;
+		} catch (SQLException e) {
+			System.err.println("meeting insert 과정에서 오류 발생 " + e);
 			return false;
 		} finally {
 			close(pstmt, null, conn);

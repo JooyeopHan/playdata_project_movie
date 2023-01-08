@@ -38,16 +38,12 @@ public class DetailServlet extends HttpServlet {
 			throws ServletException, IOException {
 		
 		
-		
 		String cnt = request.getParameter("cnt");
 		String action = request.getParameter("action");
 		
-		
-		System.out.println("영화 :" +request.getParameter("movie"));
-		System.out.println("id :" +request.getParameter("id"));
 		String view = "";
+		
 		if (action.equals("delete")) {
-			System.out.println("삭제하지 말라니까?");
 			boolean result = dao.delete(Integer.parseInt(cnt)); // 삭제 쿼리문 수행
 			
 			if (result) {
@@ -57,15 +53,38 @@ public class DetailServlet extends HttpServlet {
 			}	
 
 			RequestDispatcher rd= request.getRequestDispatcher("select");
-			rd.forward(request,response);
+			rd.forward(request,response);		
+		}
+		
+		else if(action.equals("insert")) {
+			CommentVO vo = new CommentVO();
+			System.out.println("insert서블릿 작동");
+		
+			String name = request.getParameter("nickname");
+			String content = request.getParameter("content");
+			String movie = request.getParameter("movie");
+			System.out.println("영화 :" +movie);
+			System.out.println("id :" +request.getParameter("id"));
 			
+			vo.setNickname(name);// 로그인 기능 추가 후 로그인한 계정으로 변경
+			vo.setContent(content);
+			vo.setMoviename(movie);
+			
+
+			
+			boolean result = dao.insert(vo);
+			if (result) {			
+				request.setAttribute("msg","글이 성공적으로 입력되었습니다.");			
+			} else {
+				request.setAttribute("msg","글이 입력되지 않았습니다.");
+			}
+			RequestDispatcher rd= request.getRequestDispatcher("select");
+			rd.forward(request,response);	
 		}
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-		System.out.println("넘어간거는 맞아?");
 		request.setCharacterEncoding("UTF-8");
-		
 		
 		
 		//Json정보 get body 및 Object 변환
