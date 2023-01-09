@@ -98,22 +98,17 @@
 			      	<% if(!loginox){%>
 			        <form method="post" action="login">
 			        <div class="d-flex justify-content-center mt-3" id="loginBoxTitle">
-			         <h3 class="mb-3">로그인 타이틀</h3>
+			         <img src="./logo-black.png" style="width: 10vw; height: 8vh">
 			        </div>
 			      	<div class="form-floating mt-3">
 					 <input type="text" class="form-control" name="id" id="id">
 					 <label for="id">아이디</label>
 					</div>
-					<div class="form-floating mt-3">
+					<div class="form-floating mt-3 mb-3">
 					 <input type="password" class="form-control" name="pwd" id="pwd">
 					 <label for="pwd">비밀번호</label>
 					</div>
-					<div class="form-check mt-3">
-       				 <input type="checkbox" class="form-check-input" id="dropdownCheck">
-        			 <label class="form-check-label" for="dropdownCheck">
-         			  아이디 저장
-       				 </label>
-       				</div> 
+
 					<button class="w-100 btn btn-lg btn-secondary mt-3" type="submit">로그인</button>
 					<a href="http://localhost:8088/reprotype/sign-up.jsp"><button class="w-100 btn btn-lg btn-secondary mt-3" type="button">회원가입</button></a>
 			      	</form>
