@@ -13,8 +13,8 @@ public class NaverAPI {
 	public NaverAPI() {}
 	
     public static String getUrl(String movieNM) {
-        String clientId = "COS9_Ly5kVci4lqS1qBT"; //애플리케이션 클라이언트 아이디
-        String clientSecret = "zxfwKlujSG"; //애플리케이션 클라이언트 시크릿
+        String clientId = "ywXowlX9bia62MXT9w7h"; //애플리케이션 클라이언트 아이디
+        String clientSecret = "m3Yj9AnTCD"; //애플리케이션 클라이언트 시크릿
 
         	
         String text = null;

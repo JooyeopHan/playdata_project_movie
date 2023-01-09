@@ -28,12 +28,6 @@
 </head>
 <body class="bg color " style=" width: 100vw; height: 100vh;">
 <% request.setCharacterEncoding("utf-8"); %>	
-<%
-	
-%><%-- 
-<c:if test="${not empty member}">
-	<p><%=member%></p>
-</c:if> --%>
 
 		<jsp:include page="header.jsp"></jsp:include>
 		<jsp:include page="movieList.jsp">
