@@ -17,7 +17,6 @@
 .color{
 		color:#D0D0D0;
 }
-
 #loginBoxTitle{
   color:#000000;
   font-weight: bold;
@@ -28,7 +27,6 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-
 .subindex_purplebox {
     padding: 16px 17px 0;
     border-radius: 12px;
@@ -58,23 +56,37 @@
 .useremail {
 	margin-bottom: 0px;
 }
+.main-title {
+	font-size: 32px;
+  	font-weight: 600;
+ 	color: #1928A2;
+ 	text-align: center;
+ 	margin: 48px 0 24px;
+	}
 </style>
 </head>
 <body>
-<div class="p-2 color">
-			<div class="container-fluid text-center ">
-				<h1 class="display-3 " style="margin: 0;">Display 2</h1>
+	<div class="p-2 color">
+			<div class="container-fluid text-center" >
+				<a href="http://localhost:8088/reprotype/log">
+			  	 <img src="./logo.png" style="width: 30vw; height: 15vh">
+			   </a>
+<!-- 				<h1 class="main-title " style="margin: 0;"></h1> -->
 			</div>
 			<nav class="navbar ">
-			  <div class="container-fluid">
-			    <a class="navbar-brand " href="http://localhost:8088/reprotype/index.jsp"><span class="color">Offcanvas navbar</span></a>
-			    <button class="navbar-toggler" style="background-color:#D0D0D0;border:none;" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-			      <span class="btn" style="color: white;">login</span>
+			  <div class="container-fluid mx-5 justify-content-md-end">
+			   
+			    <button class="navbar-toggler mt-3 " style="padding:0px" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+<!-- 			      <span class="btn btn-primary btn-lg">로그인</span> -->
+					<svg xmlns="http://www.w3.org/2000/svg" width="5vw" height="3vw" fill="white" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
+					  <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z"/>
+					</svg>
+					  
 			    </button>
 			    
 			    <div class="offcanvas offcanvas-end " tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
 			      <div class="container">
-							<% 
+							<%
 								memberVO member = (memberVO)session.getAttribute("mem");
 								boolean loginox = false;
 								if(member != null){
@@ -84,22 +96,17 @@
 			      	<% if(!loginox){%>
 			        <form method="post" action="login">
 			        <div class="d-flex justify-content-center mt-3" id="loginBoxTitle">
-			         <h3 class="mb-3">로그인 타이틀</h3>
+			         <img src="./logo-black.png" style="width: 10vw; height: 8vh">
 			        </div>
 			      	<div class="form-floating mt-3">
 					 <input type="text" class="form-control" name="id" id="id">
 					 <label for="id">아이디</label>
 					</div>
-					<div class="form-floating mt-3">
+					<div class="form-floating mt-3 mb-3">
 					 <input type="password" class="form-control" name="pwd" id="pwd">
 					 <label for="pwd">비밀번호</label>
 					</div>
-					<div class="form-check mt-3">
-       				 <input type="checkbox" class="form-check-input" id="dropdownCheck">
-        			 <label class="form-check-label" for="dropdownCheck">
-         			  아이디 저장
-       				 </label>
-       				</div> 
+
 					<button class="w-100 btn btn-lg btn-secondary mt-3" type="submit">로그인</button>
 					<a href="http://localhost:8088/reprotype/sign-up.jsp"><button class="w-100 btn btn-lg btn-secondary mt-3" type="button">회원가입</button></a>
 			      	</form>
