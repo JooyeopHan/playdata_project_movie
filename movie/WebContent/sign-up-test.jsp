@@ -21,14 +21,14 @@
             
             <form id="signupForm" name="signupForm">
                 <div class="form-floating mt-4">
-					 <input type="text" class="form-control" id="id" name="id" placeholder="holdid" required>
+					 <input type="text" class="form-control" id="id1" name="id" placeholder="holdid" required>
 					 <label for="id">아이디</label>
 						 <div class="valid-feedback">사용가능</div>
 						 <div class="invalid-feedback">4자리 이상 입력하세요.</div>
 				</div>		
 							
 				<div class="form-floating mt-4">
-					<input type="password" class="form-control" id="pwd" name="pwd" placeholder="holdpwd" required>
+					<input type="password" class="form-control" id="pwd1" name="pwd" placeholder="holdpwd" required>
 					<label for="pwd">비밀번호</label>
 						<div class="valid-feedback">사용가능</div>
 						<div class="invalid-feedback">4자리 이상 입력하세요.</div>
@@ -80,14 +80,14 @@
 	    		}
 	    	}
         
-        	document.querySelector("#id").addEventListener("input", function(){
+        	document.querySelector("#id1").addEventListener("input", function(){
         		let inputId=this.value;
         		isValid = inputId.length >= 4 ? true : false;   
       		
         		checkValid(this, isValid);
         	});
         	
-        	document.querySelector("#pwd").addEventListener("input", function(){
+        	document.querySelector("#pwd1").addEventListener("input", function(){
         		let inputPwd=this.value;
         		isValid = inputPwd.length >= 4 ? true : false;   
       		
@@ -96,7 +96,7 @@
         	
         	document.querySelector('#repwd').addEventListener("input", function(){
         		let inputRepwd=this.value;
-        		let pwd = document.querySelector("#pwd").value;       		
+        		let pwd = document.querySelector("#pwd1").value;       		
         		isValid = inputRepwd == pwd ? true : false;
         		
         		checkValid(this, isValid);
