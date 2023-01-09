@@ -51,12 +51,35 @@ table {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-.subindex_greenbox {
+.subindex_purplebox {
     padding: 16px 17px 0;
     border-radius: 12px;
     border: solid 1px #cb89ea;
     background-color: #fff;
     box-sizing: border-box;
 }
+.profile_area {
+    -webkit-text-size-adjust: none;
+    font-size: 1rem;
+    font-family: -apple-system,BlinkMacSystemFont,helvetica,"Apple SD Gothic Neo",sans-serif;
+    color: #1e1e23;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 12px 20px 12px;
+    display: block;
+    background-color: #fff;
+}
+.title_text {
+	opacity: 0.5;
+}
+.userid {
+	font-size: 25px;
+	font-weight: bold;
+	margin-bottom: 0px;
+}
+.useremail {
+	margin-bottom: 0px;
+}
+
 
 }
