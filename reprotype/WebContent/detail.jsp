@@ -21,11 +21,21 @@
 		color:#D0D0D0;
 	}
 	.bg{
-		background-color:#292929;
+		background-color:#0f1b29;
 	}
 	.img{
 		border-radius: 12px;
 		box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+		display: block;
+		  margin-left: auto;
+		  margin-right: auto;
+		  width: 50%;
+		
+	}
+	.content{
+		color:blue;
+		font-weghit: bold;
+		text-shadow: 2px 2px 2px gray; 
 	}
 </style>
 </head>
@@ -35,7 +45,11 @@
 	Integer id =  Integer.parseInt(String.valueOf(request.getAttribute("id"))); 
 	ArrayList<MovieVO> movielist = (ArrayList<MovieVO>)session.getAttribute("movielist");
 	ArrayList<CommentVO> commentlist = (ArrayList<CommentVO>)request.getAttribute("commentlist");
-	
+	memberVO member = (memberVO)session.getAttribute("mem");
+	String nick= "";
+	if(member!= null){ 
+		nick= member.getNickname();
+	}
 	String m1 = movielist.get(id).getImgUrl();
 	String m2 = movielist.get(id).getMovieNM();
 	String m3 = movielist.get(id).getSubtitle();
@@ -49,34 +63,38 @@
 %>		
 	<jsp:include page="header.jsp"></jsp:include>
 	<hr class="my-3"style="color:white; width:100%;">
-	<div class="container bg-secondary py-3 pt-3 my-3" style="height:auto;">
-		<div class="container bg-white mx-auto" style="width:80vw; height:auto; color:black;">
-			<img class="mt-3 img" src=<%=m1 %> style="width:30vw; height: 50vh;">
+	
+		<div class="container bg-white mx-auto" style="width:80vw; height:auto; color:black; border-radius:30px;">
+			<br>
+			<h1 class = "text-center" style = "text-shadow: 2px 2px 2px gray; "><%=m2 %> </h1>
 			<hr style="color:black;">
-			<p>영화 제목 : <%=m2 %> </p>
-			<p>영화 부제 : <%=m3 %> </p>
-			<p>영화 등급 : <%=m4 %> </p>
-			<p>관객 평점 : <%=m5 %> </p>
-			<p>시작 날짜 : <%=m6 %> </p>
-			<p>영화 감독 : <%=m7 %> </p>
-			<p>영화 배우 : <%=m8 %> </p> 
+			<img class="mt-3 img " src=<%=m1 %> style="width:400px; height: 600px">
+			<hr style="color:black;">
+			
+			<p><span class = "content">부제 :</span> <%=m3 %> </p>
+			<p><span class = "content">박스 오피스 순위 :</span> <%=m4 %> 위 </p>
+			<p><span class = "content">관객 평점:</span> <%=m5 %> 점</p>
+			<p><span class = "content">개봉 년도 :</span> <%=m6 %> </p>
+			<p><span class = "content">영화 감독 :</span> <%=m7 %> </p>
+			<p><span class = "content">영화 배우 :</span> <%=m8 %> </p> 
 			<hr style="color:black;">
 			<form action = "detail" method = "get">
 				<div class="input-group mb-3 mx-auto floating-right row">
 					<input type="hidden" name="movie" value="<%= m2 %>">
-					<input type="hidden" name="nickname" value="익명">
+					<input type="hidden" name="nickname" value="<%=nick %>">
 					<input type="hidden" name="id" value="<%= id %>">
 					<input type="hidden" name="action" value="insert">
 	  				<input type="text" name="content" class="form-control col-10" placeholder="댓글을 작성해주세요" aria-describedby="button-addon2">
-	  				<button class="btn col-2" type="submit" id="button-addon2" style="border:0.1px solid black;background-color:#D0D0D0;">게시</button>
+	  				<button class="btn col-2" type="submit" id="button-addon2" style="border:0.1px solid black;background-color:#D0D0D0;" <%if (!nick.equals("")){ %>disabled <%} %> >게시</button>
 				</div>
 			</form>
 			<hr style="color:black;">
-			<table class="table">
+			<table class="table" style = "font-weight :bold ;">
 				<thead>
 					<tr>
 						<th class="col-2">닉네임</th>
-						<th class="col-8">댓글 내용</th>
+						<th class="col-4">댓글 내용</th>
+						<th class="col-2">좋아요</th>
 						<th class="col-1">수정</th>
 						<th class="col-1">삭제</th>
 					</tr>
@@ -84,9 +102,30 @@
 				<tbody>
 				<c:forEach var="item" items = "${commentlist}"  begin="0" end="3" >
 					<tr>
-						<td>${item.nickname}</td>
-						<td>${item.content}</td>
-						<th class="col-1">					
+						<td class="col-2">${item.nickname}</td>
+						<td class="col-4">${item.content}</td>
+						<td class="col-2">
+							<div style="display:flex; flex-direction:row;">
+								<p class="mx-3">${item.getLike()}</p>
+								<form action="commentps" method="get">
+									<input type="image" class="mx-1 border rounded"  style="width:20px; height:20px;" src="plus-lg.svg">
+									<input type="hidden" name="like"  value="${item.getLike()+1}" >
+									<input type = "hidden" name = "cnt" value = "${item.cnt}">
+									<input type="hidden" name="id" value="<%=id %>" >
+									<input type="hidden" name="movie" value="<%=m2 %>" >
+									<input type="hidden" name="action" value="plus">
+								</form>
+								<form action="commentps" method="get">
+									<input type="image"  class="mx-1 border rounded" style="width:20px; height:20px;" src="dash-square.svg">
+									<input type="hidden" name="like"  value="${item.getLike()-1}" >
+									<input type = "hidden" name = "cnt" value = "${item.cnt}">
+									<input type="hidden" name="id" value="<%=id %>" >
+									<input type="hidden" name="movie" value="<%=m2 %>" >
+									<input type="hidden" name="action" value="plus">
+								</form>
+							</div>
+						</td>
+						<td class="col-1">					
 							<button type="button"
 		                        class="btn btn-sm btn-outline-primary"
 		                        data-bs-toggle="modal"
@@ -100,8 +139,8 @@
 								<input type = "hidden" name = "cnt" value = "${item.cnt}">
 								<input type="hidden" name="action" value="update"> --%>
 
-						</th>
-						<th class="col-1">
+						</td>						
+						<td class="col-1">
 							<form action="detail" method="get">
 								<input type="image" name="delete" value="${i}" src="delete.png" style="width:20px; height:20px;">
 								<input type = "hidden" name = "cnt" value = "${item.cnt}">
@@ -109,13 +148,13 @@
 								<input type="hidden" name="movie" value="<%=m2 %>" >
 								<input type="hidden" name="action" value="delete">
 							</form>
-						</th>
+						</td>
 					</tr>
 				</c:forEach>
 				</tbody>
 			</table>
 		</div>
-	</div>
+	
 	<!-- Modal -->
 <div class="modal fade" id="comment-edit-modal" tabindex="-1">
     <div class="modal-dialog">

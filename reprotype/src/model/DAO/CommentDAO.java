@@ -32,10 +32,7 @@ public class CommentDAO {
 			
 			list = new ArrayList<CommentVO>();
 			while(rs.next()) {
-				CommentVO vo = new CommentVO();
-				
-				
-								
+				CommentVO vo = new CommentVO();	
 				vo.setNickname(rs.getString(1));
 				vo.setPrehour(rs.getDate(2));
 				vo.setContent(rs.getString(3));
@@ -76,7 +73,7 @@ public class CommentDAO {
 			
 			
 			Date today = new Date ();
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 			String targetDay = sdf.format(today);
 
 			pstmt.setString(1, vo.getContent());
@@ -92,6 +89,26 @@ public class CommentDAO {
 		}
 	}
 		
+	public boolean updateLike(CommentVO vo) {
+		Connection conn = ConnectDB.connect();
+		PreparedStatement pstmt = null;
+		try {
+			pstmt = conn.prepareStatement(
+					"update comm set " +  
+					"like_no = ? "+ 
+					"where cnt = ?"); 
+
+			pstmt.setInt(1, vo.getLike());
+			pstmt.setInt(2, vo.getCnt());
+			pstmt.executeUpdate();
+			return true;
+		} catch (SQLException e) {
+			System.err.println("comment insert 과정에서 오류 발생 " + e);
+			return false;
+		} finally {
+			close(pstmt, null, conn);
+		}
+	}
 		
 	public boolean delete(int cnt) {
 		Connection conn = ConnectDB.connect();
@@ -115,11 +132,11 @@ public class CommentDAO {
 		Connection conn = ConnectDB.connect();
 		PreparedStatement pstmt = null;
 		Date today = new Date ();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		String targetDay = sdf.format(today);
 		
 		try {
-			pstmt = conn.prepareStatement("INSERT INTO comm VALUES(?,?,?,?,?,comm_seq.NEXTVAL)");
+			pstmt = conn.prepareStatement("INSERT INTO comm(nickname,preHour,cont,movieName,like_no) VALUES(?,?,?,?,?)");
 			pstmt.setString(1, vo.getNickname());
 			pstmt.setString(2, targetDay);
 			pstmt.setString(3, vo.getContent());

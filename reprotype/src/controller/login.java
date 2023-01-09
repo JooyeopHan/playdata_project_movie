@@ -33,5 +33,14 @@ public class login extends HttpServlet {
 		
 		response.sendRedirect("/reprotype/login.jsp");
 	}
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		String logout = request.getParameter("action");
+		HttpSession session = request.getSession();
+		if(logout.equals("logout")) {
+			session.removeAttribute("mem");
+		}
+		response.sendRedirect("/reprotype/login.jsp");
+	}
 
 }

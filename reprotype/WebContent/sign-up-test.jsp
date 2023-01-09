@@ -19,7 +19,7 @@
                 </a>
             </div>
             
-            <form id="signupForm" name="signupForm">
+            <form action = "register" method = "post" id="signupForm" name="signupForm">
                 <div class="form-floating mt-4">
 					 <input type="text" class="form-control" id="id" name="id" placeholder="holdid" required>
 					 <label for="id">아이디</label>

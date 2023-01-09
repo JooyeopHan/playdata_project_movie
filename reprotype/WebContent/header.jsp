@@ -17,6 +17,47 @@
 .color{
 		color:#D0D0D0;
 }
+
+#loginBoxTitle{
+  color:#000000;
+  font-weight: bold;
+  font-size: 50px;
+  padding: 5px;
+  margin-bottom: 20px;
+  background: linear-gradient(to left, #f6e9fd, #cb89ea);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subindex_purplebox {
+    padding: 16px 17px 0;
+    border-radius: 12px;
+    border: solid 1px #cb89ea;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+.profile_area {
+   	-webkit-text-size-adjust: none;
+    font-size: 1rem;
+    font-family: -apple-system,BlinkMacSystemFont,helvetica,"Apple SD Gothic Neo",sans-serif;
+    color: #1e1e23;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 12px 20px 12px;
+    display: block;
+    background-color: #fff;
+}
+.title_text {
+	opacity: 0.5;
+}
+.userid {
+	font-size: 25px;
+	font-weight: bold;
+	margin-bottom: 0px;
+}
+.useremail {
+	margin-bottom: 0px;
+}
 </style>
 </head>
 <body>
@@ -26,7 +67,7 @@
 			</div>
 			<nav class="navbar ">
 			  <div class="container-fluid">
-			    <a class="navbar-brand " href="http://localhost:8088/reprotype/login.jsp"><span class="color">Offcanvas navbar</span></a>
+			    <a class="navbar-brand " href="http://localhost:8088/reprotype/index.jsp"><span class="color">Offcanvas navbar</span></a>
 			    <button class="navbar-toggler" style="background-color:#D0D0D0;border:none;" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
 			      <span class="btn" style="color: white;">login</span>
 			    </button>
@@ -63,8 +104,20 @@
 					<a href="http://localhost:8088/reprotype/sign-up.jsp"><button class="w-100 btn btn-lg btn-secondary mt-3" type="button">회원가입</button></a>
 			      	</form>
 			      	<%} else{%>
-			      		<h3>로그인 성공</h3>
-			      		<a href="http://localhost:8088/reprotype/sign-up.jsp"><button class="w-100 btn btn-lg btn-secondary mt-3" type="button">회원가입</button></a>
+			      		<div class="subindex_purplebox mt-3">
+						<div class="profile_area">
+							<img src="https://phinf.pstatic.net/contact/20191003_136/1570029116351cmgSW_GIF/200.gif?type=s160" width="84" height="84" alt="프로필 이미지">
+								<div class="profile">
+									<p class="userid"><%=member.getNickname() %></p>
+									<p class="useremail"><%=member.getEmail() %></p>
+									<p class="signupdate">가입날짜 : <%=member.getCurdate() %></p>
+								</div>
+							</div>
+						</div>
+			      		<form method="get" action="login">
+			      			<input type="hidden" name="action" value="logout">
+			      			<button class="w-100 btn btn-lg btn-secondary mt-3" type="submit">로그아웃</button>
+			      		</form>
 			      	<%} %>
 			      </div>
 			      <div class="offcanvas-body">

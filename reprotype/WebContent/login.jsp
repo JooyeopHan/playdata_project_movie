@@ -22,22 +22,17 @@
 		color:#D0D0D0;
 	}
 	.bg{
-		background-color:#292929;
+		background-color:#0f1b29;
+		
 	}
 </style>
 </head>
-<body class="bg color " style=" width: 100vw; height: 100vh;">
+<body class="bg color " style="width: 100vw; height: 100vh;">
 <% request.setCharacterEncoding("utf-8"); %>	
-<%
-	
-%><%-- 
-<c:if test="${not empty member}">
-	<p><%=member%></p>
-</c:if> --%>
 
 		<jsp:include page="header.jsp"></jsp:include>
 		<jsp:include page="movieList.jsp">
-			<jsp:param name="title" value="일별 랭킹순" />
+			<jsp:param name="title" value="일일 박스 오피스 랭킹" /> 	
 		</jsp:include>
 	<hr style="color:black; ">
 	<jsp:include page="footer.jsp" />
