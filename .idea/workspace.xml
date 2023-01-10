@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="56bc6280-b23f-46d3-9ba6-75ee332f4276" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/reprotype/build/classes/api/RankingWeekAPI.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reprotype/build/classes/controller/DetailServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reprotype/build/classes/controller/SelectServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reprotype/build/classes/controller/UpdateServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reprotype/build/classes/controller/commentps.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reprotype/build/classes/controller/mem_del.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reprotype/build/classes/controller/register.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reprotype/build/classes/filter/HangulFilter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reprotype/build/classes/model/DAO/CommentDAO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reprotype/build/classes/model/VO/CommentVO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reprotype/src/main/java/api/RankingWeekAPI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reprotype/src/main/java/controller/DetailServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reprotype/src/main/java/controller/SelectServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reprotype/src/main/java/controller/UpdateServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reprotype/src/main/java/controller/commentps.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reprotype/src/main/java/controller/mem_del.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reprotype/src/main/java/controller/register.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reprotype/src/main/java/filter/HangulFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reprotype/src/main/java/model/DAO/CommentDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reprotype/src/main/java/model/VO/CommentVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reprotype/webContent/bg.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reprotype/webContent/blue-led-cinema-screen_42077-647.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reprotype/webContent/card.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reprotype/webContent/cover.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reprotype/webContent/cover.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reprotype/webContent/dash-square.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reprotype/webContent/download.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reprotype/webContent/download2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reprotype/webContent/logo-black.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reprotype/webContent/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reprotype/webContent/plus-lg.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reprotype/build/classes/api/NaverAPI.class" beforeDir="false" afterPath="$PROJECT_DIR$/reprotype/build/classes/api/NaverAPI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reprotype/build/classes/api/RankingAPI.class" beforeDir="false" afterPath="$PROJECT_DIR$/reprotype/build/classes/api/RankingAPI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reprotype/build/classes/connectDB/ConnectDB.class" beforeDir="false" afterPath="$PROJECT_DIR$/reprotype/build/classes/connectDB/ConnectDB.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reprotype/build/classes/controller/login.class" beforeDir="false" afterPath="$PROJECT_DIR$/reprotype/build/classes/controller/login.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reprotype/build/classes/controller/loginServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/reprotype/build/classes/controller/loginServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reprotype/build/classes/model/DAO/memberDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/reprotype/build/classes/model/DAO/memberDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reprotype/build/classes/model/VO/memberVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/reprotype/build/classes/model/VO/memberVO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reprotype/src/main/java/api/NaverAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/reprotype/src/main/java/api/NaverAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reprotype/src/main/java/api/RankingAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/reprotype/src/main/java/api/RankingAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reprotype/src/main/java/connectDB/ConnectDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/reprotype/src/main/java/connectDB/ConnectDB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reprotype/src/main/java/controller/login.java" beforeDir="false" afterPath="$PROJECT_DIR$/reprotype/src/main/java/controller/login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reprotype/src/main/java/controller/loginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/reprotype/src/main/java/controller/loginServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reprotype/src/main/java/model/DAO/memberDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/reprotype/src/main/java/model/DAO/memberDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reprotype/src/main/java/model/VO/memberVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/reprotype/src/main/java/model/VO/memberVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reprotype/webContent/detail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/reprotype/webContent/detail.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reprotype/webContent/footer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/reprotype/webContent/footer.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reprotype/webContent/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/reprotype/webContent/header.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reprotype/webContent/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/reprotype/webContent/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reprotype/webContent/movieList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/reprotype/webContent/movieList.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reprotype/webContent/myCss.css" beforeDir="false" afterPath="$PROJECT_DIR$/reprotype/webContent/myCss.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reprotype/webContent/sign-up-test.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/reprotype/webContent/sign-up-test.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reprotype/webContent/sign-up.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/reprotype/webContent/sign-up.jsp" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2K7zujJpEWTUu4bi4UQYfC7L9ox" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="56bc6280-b23f-46d3-9ba6-75ee332f4276" name="Changes" comment="" />
+      <created>1673340640662</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1673340640662</updated>
+      <workItem from="1673340641960" duration="306000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
