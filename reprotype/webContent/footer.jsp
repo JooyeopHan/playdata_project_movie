@@ -10,7 +10,7 @@
 
 </head>
 <body>
-	<footer class="container-fluid  text-center py-3 mt-3" style="background: linear-gradient(#0f1b29, black 70%);">
+	<footer class="container-fluid  text-center py-3 mt-5" style="background: linear-gradient(#0f1b29, black 70%);">
 		<p class="fw-bold"> (주) One Trillion (OT)</p>
 		<p class="fst-normal text-white-50">
 			대표이사  1조<br>
