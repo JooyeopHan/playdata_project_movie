@@ -8,7 +8,7 @@ public class ConnectDB {
 		Connection conn = null;
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			String url = "jdbc:mysql://localhost:3306/jdbcdb?characterEncoding=UTF-8&serverTimezone=UTC"; 
+			String url = "jdbc:mysql://localhost:3306/jdbcdb?characterEncoding=UTF-8& serverTimezone=UTC"; 
 			String user = "root";
 			String passwd = "sug223344!";
 			conn = DriverManager.getConnection(url, user, passwd);

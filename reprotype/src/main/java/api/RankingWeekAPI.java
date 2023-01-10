@@ -10,19 +10,19 @@ import java.util.Map;
 import api.JsonReader;
 
 
-public class RankingAPI {
+public class RankingWeekAPI {
 	
-	public RankingAPI() {}
+	public RankingWeekAPI() {}
 	
     public static String getUrl(String targetDt) {
         	
 
     	//Date이 들어가야 됌 
     	
-        String apiURL = "https://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=8ef8d0855390695f37c6d9af6fd08725&targetDt="+targetDt;    // JSON 결과
+        String apiURL = "https://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchWeeklyBoxOfficeList.json?key=8778dd5ff0d67c0db92ad89d65467256&weekGb=0&targetDt="+targetDt;    // JSON 결과
 
 
-//        System.out.println(apiURL);
+        System.out.println(apiURL);
         
         String getJson = JsonReader.callURL(apiURL);
         

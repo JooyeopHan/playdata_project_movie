@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -24,14 +25,26 @@ public class login extends HttpServlet {
 		HttpSession session = request.getSession();
 		memberDAO dao = new memberDAO();
 		ArrayList<memberVO> truely = dao.search(id,pwd);
-		memberVO falsely = new memberVO();
-		if(truely.get(0).getNickname().equals("")) {
-			session.setAttribute("mem", falsely);
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter writer = response.getWriter();
+		if(truely.size() == 0) {
+			writer.println("<script>alert('로그인에 실패하였습니다');history.go(-1); </script>"); 
+			writer.close();
 		}else {
 			session.setAttribute("mem", truely.get(0));
+			writer.println("<script>alert('로그인에 성공하였습니다');location.href='http://localhost:8088/reprotype/log'; </script>"); 
+			writer.close();
 		}
-		
-		response.sendRedirect("/reprotype/login.jsp");
+	}
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		String logout = request.getParameter("action");
+		HttpSession session = request.getSession();
+		if(logout.equals("logout")) {
+			session.removeAttribute("mem");
+		}
+		response.sendRedirect("/reprotype/log");
 	}
 
 }
